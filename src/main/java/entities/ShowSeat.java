@@ -1,0 +1,32 @@
+package entities;
+
+import enums.SeatType;
+
+import enums.SeatType;
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Table(name = "SHOW_SEATS")
+@Data
+public class ShowSeat {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String seatNo;
+
+    @Enumerated(value = EnumType.STRING)
+    private enums.SeatType seatType;
+
+    private Integer price;
+
+    private Boolean isAvailable;
+
+    private Boolean isFoodContains;
+
+    @ManyToOne
+    @JoinColumn
+    private Show show;
+}
